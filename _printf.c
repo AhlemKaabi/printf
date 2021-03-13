@@ -1,8 +1,9 @@
 #include "holberton.h"
 #include <stdlib.h>
 /**
-*
-*
+* _printf - function that produces output according to a format.
+* @format: is a character string
+* Return: 
 */
 int _printf(const char *format, ...)
 {
