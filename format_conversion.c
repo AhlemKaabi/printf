@@ -3,9 +3,15 @@
 * print_char - function that prints a char
 * @c: pointer to char
 */
-void print_char(va_list c)
+int print_char(va_list c)
 {
-	_putchar(C);
+	i = 0;
+	while(c != '\0')
+	{
+		write(1, &c , 1);
+		i++;
+	}
+	return (i);
 }
 /**
 * print_string - function that prints string
