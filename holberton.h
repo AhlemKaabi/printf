@@ -1,13 +1,26 @@
 #ifndef HOLBERTON_HEADER
 #define HOLBERTON_HEADER
-int _printf(const char *format, ...);
-//typedef
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdarg.h>
+/**
+* struct convert - defines a structure for symbols and functions
+*
+* @c: The operator
+* @f: The function that matches
+*/
 typedef struct conv_specifier
 {
 	char *c;
-	void (*f)();
+	int (*f)(va_list);
 } match_conversion;
+
+/* initial functions */
 int _putchar(char c);
-void print_char(va_list c);
-void print_string(va_list c);
+int _printf(const char *format, ...);
+int parser(char *format);
+
+/* format conversion functions */
+int print_char(va_list c);
+int print_string(va_list c);
 #endif
