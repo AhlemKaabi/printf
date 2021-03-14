@@ -1,0 +1,20 @@
+/********************** add to f_list[] ****************/
+{"d", print_int},
+{"e", print_exponential},
+{"f", print_float},
+{"g", print_general},
+{"i", print_int},
+{"o", print_octal},
+{"s", print_string},
+{"u", print_unsigned_deciaml},
+{"x", print_hexadecimal},
+{"%", print_char},
+
+/********************** add to e_list[] ****************/
+
+{"a", audible_alert},
+{"b", back_space},
+{"f", form_feed},
+{"r", carriage_return},
+{"t", tab},
+{"v", vertical_tab},

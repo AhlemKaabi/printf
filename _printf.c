@@ -2,24 +2,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
-int check_exist_char(char x, match_conversion f_list[])
-{
-	int i = 0;
-	
-	while (f_list[i].c != NULL)
-	{
-		if (f_list[i].c[0] == x)
-		{
-			return (i);
-		}
-	}
-	return (-1);
-}
 /**
- * _strlen - returns the length of a string.
- *@s: parameter pointer var
- * Return: Always 0.
- */
+* _strlen - returns the length of a string.
+* @s: parameter pointer var
+* Return: Always 0.
+**/
 int _strlen(const char *s)
 {
 	int i = 0;
@@ -31,50 +18,105 @@ int _strlen(const char *s)
 	return (i);
 }
 /**
- * parser - function that will parse the given format
- * and count how many chars are printed
- * it will also call the function that match the format specifier
- * @format: *pointer to the given format
- * Return: the number of printed chars count1
+* check_exist_char - check if char send is a format specifier
+* @v: char that comes after the %
+* Return: position of the matched formatter in the table f_list[]
 **/
-int parser(const char *format, va_list arguments)
+int check_exist_formatter(char x, match_conversion f_list[])
 {
-	/* --- TODO: use _strspn to check if there is no % directly    */ 
-	/* --- DONE: declare table of type match_conversion            */
-	/* --- DONE: loop through the format and check for %           */
-	/* --- TODO: if no % is found return NULL                      */
-	/* --- TODO: add a function check_exist_char(v,f_list) for one char match */
-	/* --- TODO: add a function check_exist_multiple(v,f_list) for more than 1 char match */
-	/* --- TODO: add condition for escape character \ */
-	/* --- TODO: add condition for \n */
-	match_conversion f_list[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{NULL, NULL}
-	};
+	int i = 0;
+
+	while (f_list[i].c != NULL)
+	{
+		if (f_list[i].c[0] == x)
+		{
+			return (i);
+		}
+		else
+		{
+			i++;
+		}
+	}
+	return (-1);
+}
+/**
+ * check_escape - check if char send is special
+ * @x: char that comes after the \
+ * Return: position of match in the table e_list[]
+**/
+int check_escape(char x, match_escape e_list[])
+{
+	int i = 0;
+
+	while (e_list[i].c != NULL)
+	{
+		if (e_list[i].c[0] == x)
+		{
+			return (i);
+		}
+		else
+		{
+			i++;
+		}
+	}
+	return (-1);
+}
+/**
+ * parser - function that will parse the given format
+ * @format: *pointer to the given format
+ * @arguments: pointer to arguments
+ * @f_list[]: table containing format specifier
+ * @e_list[]: table containing escape specifier
+ * Return: the number of printed chars in count1
+**/
+int parser(const char *format, va_list arguments, match_conversion f_list[], match_escape e_list[])
+{
 	char v;
-	/* pos correspond to which position in f_list there is a match */
 	int pos, i, j;
 	int printed_chars = 0;
-	int (*func_ptr)(va_list);
-	
+	int (*func_ptr_frmt)(va_list);
+	int (*func_ptr_escape)(void);
+
 	for (i = 0; format[i] != '\0'; i++)
-	{	
+	{
+		/* this block checks for the format specifier */
 		if (*(format + i) == '%')
-		{	
+		{
 			j = i + 1;
-			/* the format is only one char so check it's existence here */
 			v = *(format + j);
-			pos = check_exist_char(v,f_list);
+			pos = check_exist_formatter(v, f_list);
 			if (pos == -1)
 			{
-				return (0);
+				/* the format specifier is not defined just print the % and the char */
+				_putchar(*(format + i));
+				_putchar(v);
+				printed_chars = printed_chars + 2;
+				i = i + 2;
 			}
 			else
 			{
-				func_ptr = f_list[pos].f;
-				printed_chars = printed_chars + func_ptr(arguments);
+				func_ptr_frmt = f_list[pos].f;
+				printed_chars = printed_chars + func_ptr_frmt(arguments);
 				i++;
+			}
+		}
+		/* this block checks for the escape character */
+		else if (*(format + i) == '\\')
+		{
+			j = i + 1;
+			v = *(format + j);
+			pos = check_escape(v, e_list);
+			if (pos == -1)
+			{
+				_putchar(*(format + i));
+				printed_chars++;
+				i++;
+			}
+			else
+			{
+				func_ptr_escape = e_list[pos].f;
+				printed_chars = printed_chars + func_ptr_escape();
+				i = i + 2;
 			}
 		}
 		else
@@ -83,20 +125,28 @@ int parser(const char *format, va_list arguments)
 			printed_chars++;
 		}
 	}
-return (printed_chars);	
+return (printed_chars);
 }
 /**
 * _printf - function that produces output according to a format.
 * @format: is a character string
-* Return: 
+* Return:
 */
 int _printf(const char *format, ...)
 {
-	//if format not exit --> return -1
-	// else call parser
+	match_conversion f_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{NULL, NULL}
+	};
+	match_escape e_list[] = {
+		{"n", new_line},
+		{NULL, NULL}
+	};
+
 	int final_count;
 	va_list arguments;
-	
+
 	if (format == NULL)
 	{
 		return (-1);
@@ -104,11 +154,9 @@ int _printf(const char *format, ...)
 	else
 	{
 		va_start(arguments, format);
-		final_count = parser(format, arguments);
-		/* if fun_ptr is NULL print the format */
-		/* if fun_ptr is not NULL execute it with fun_ptr(argument) */
+		final_count = parser(format, arguments, f_list, e_list);
 	}
-	
+
 	va_end(arguments);
 	return(final_count);
 }
