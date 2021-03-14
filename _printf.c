@@ -137,6 +137,8 @@ int _printf(const char *format, ...)
 	match_conversion f_list[] = {
 		{"c", print_char},
 		{"s", print_string},
+		{"d", print_int},
+		{"%", print_char},
 		{NULL, NULL}
 	};
 	match_escape e_list[] = {

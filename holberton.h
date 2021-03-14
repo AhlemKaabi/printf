@@ -34,6 +34,8 @@ int parser(const char *format, va_list arguments, match_conversion f_list[], mat
 /* format conversion functions */
 int print_char(va_list arg);
 int print_string(va_list arg);
+int print_int(va_list arg);
+
 /* escape conversion functions */
 int new_line(void);
 #endif
