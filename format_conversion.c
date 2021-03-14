@@ -48,6 +48,7 @@ int print_int(va_list arg)
 		n = -n;
 		o = -o;
 		_putchar('-');
+		Count++;
 	}
 	num = n;
 	div = 1;
@@ -68,5 +69,6 @@ int print_int(va_list arg)
 		}
 	}
 	_putchar(o + '0');
+	Count++;
 	return (Count);
 }
