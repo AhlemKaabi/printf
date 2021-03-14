@@ -2,6 +2,34 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
+int check_exist_char(char x, match_conversion f_list[])
+{
+	int i = 0;
+	
+	while (f_list[i].c != NULL)
+	{
+		if (f_list[i].c[0] == x)
+		{
+			return (i);
+		}
+	}
+	return (-1);
+}
+/**
+ * _strlen - returns the length of a string.
+ *@s: parameter pointer var
+ * Return: Always 0.
+ */
+int _strlen(const char *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
 /**
  * parser - function that will parse the given format
  * and count how many chars are printed
@@ -23,56 +51,39 @@ int parser(const char *format, va_list arguments)
 		{"c", print_char},
 		{"s", print_string},
 		{NULL, NULL}
-	}
-	char *aux;
+	};
 	char v;
 	/* pos correspond to which position in f_list there is a match */
-	int pos;
-	int count1 = 0;
+	int pos, i, j;
+	int printed_chars = 0;
 	int (*func_ptr)(va_list);
-
+	
 	for (i = 0; format[i] != '\0'; i++)
 	{	
 		if (*(format + i) == '%')
 		{	
-			j = i++;
-			while (*(format + j + 1) != '\0' && *(format + j + 1) != ' ')
+			j = i + 1;
+			/* the format is only one char so check it's existence here */
+			v = *(format + j);
+			pos = check_exist_char(v,f_list);
+			if (pos == -1)
 			{
-				j++;
+				return (0);
 			}
-			len = j - i;
-			if (len == 1)
-			{
-				/* the format is only one char so check it's existence here */
-				v = *(format + j);
-				pos = check_exist_char(*(format + j),f_list);
-				if (pos == NULL)
-				{
-					return (NULL);
-				}
-				func_ptr = f_list[pos].f;
-				count1 = count1 + func_ptr(arguments);
-			}
-			/* this block here handle for multiple specifier like example %ui or %xyz */
 			else
 			{
-				/* copy to aux from i + 1, len chars */
-				_strncpy(aux,format,len, i + 1);
-				/* check if aux exists in the f_list table */
-				pos = check_exist_multiple(aux,f_list);
-				if (pos == NULL)
-				{
-					return (NULL);
-				}
-				else
-				{
-					func_ptr = f_list[pos].f;
-					count1 = count1 + func_ptr(arguments);
-				}
+				func_ptr = f_list[pos].f;
+				printed_chars = printed_chars + func_ptr(arguments);
+				i++;
 			}
 		}
+		else
+		{
+			_putchar(*(format + i));
+			printed_chars++;
+		}
 	}
-return (count1);	
+return (printed_chars);	
 }
 /**
 * _printf - function that produces output according to a format.

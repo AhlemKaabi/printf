@@ -8,26 +8,26 @@
 * @c: argument of type va_list
 * @return: number of elements printed
 */
-int print_char(va_list c)
+int print_char(va_list arg)
 {
-	i = 0;
-	while(c != '\0')
-	{
-		write(1, &c , 1);
-		i++;
-	}
-	return (i);
+	char c;
+	c = va_arg(arg, int);
+	_putchar(c);
+	return (1);
 }
 /**
 * print_string - function that prints string
 * @c: argument of type va_list
 * @return: number of elements printed
 */
-void print_string(va_list c)
+int print_string(va_list arg)
 {
-	for (i = 0; c[i] != '\0'; i++)
+	int i = 0;
+	char *str;
+	str = va_arg(arg, char *);
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		_putchar(c);
+		_putchar(str[i]);
 	}
 	return (i);
 }

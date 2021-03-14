@@ -18,9 +18,9 @@ typedef struct conv_specifier
 /* initial functions */
 int _putchar(char c);
 int _printf(const char *format, ...);
-int parser(char *format);
+int parser(const char *format, va_list arguments);
 
 /* format conversion functions */
-int print_char(va_list c);
-int print_string(va_list c);
+int print_char(va_list arg);
+int print_string(va_list arg);
 #endif
