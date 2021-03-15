@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
 * print_char - function that prints a char
@@ -24,6 +25,10 @@ int print_string(va_list arg)
 {
 	int i = 0;
 	char *str;
+	if (arg == NULL)
+	{
+		exit(98);
+	}
 	str = va_arg(arg, char *);
 	for (i = 0; str[i] != '\0'; i++)
 	{
