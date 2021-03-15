@@ -7,8 +7,10 @@
 * new_line - function that prints a char
 * return: number of char printed
 */
-int new_line(void)
+int new_line(va_list arg)
 {
+	(void)arg;
 	_putchar('\n');
 	return (1);
 }
+

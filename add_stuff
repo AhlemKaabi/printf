@@ -18,3 +18,98 @@
 {"r", carriage_return},
 {"t", tab},
 {"v", vertical_tab},
+
+
+		/* this block checks for the format specifier */
+		if (*(format + i) == '%')
+		{
+			j = i + 1;
+			v = *(format + j);
+			pos = check_exist_formatter(v, f_list);
+			if (pos == -1)
+			{
+				/* the format specifier is not defined just print the % and the char */
+				_putchar(*(format + i));
+				_putchar(v);
+				printed_chars = printed_chars + 2;
+				i = i + 2;
+			}
+			else
+			{
+				func_ptr_frmt = f_list[pos].f;
+				printed_chars = printed_chars + func_ptr_frmt(arguments);
+				i++;
+			}
+		}
+		/* this block checks for the escape character */
+		else if (*(format + i) == '\\')
+		{
+			j = i + 1;
+			v = *(format + j);
+			pos = check_escape(v, e_list);
+			if (pos == -1)
+			{
+				_putchar(*(format + i));
+				printed_chars++;
+			}
+			else
+			{
+				func_ptr_escape = e_list[pos].f;
+				printed_chars = printed_chars + func_ptr_escape();
+				i = i + 2;
+			}
+		}
+
+
+
+
+	/************************/
+	
+	/************/
+unsigned int toBi(va_list arg)
+{
+	unsigned int temp, binary = 0, reminder, f = 1;
+	int result;
+	
+	temp = va_arg(arg, int);
+	if (va_arg(arg, int) == 0)
+	{
+		return (0);
+	}
+	while(temp != 0)
+	{
+		reminder = temp % 2;
+		binary = binary + reminder * f;
+		f = f * 10;
+		temp = temp / 2;
+	}
+	result = conversion(binary);
+	return (result);
+}
+unsigned int conversion(unsigned int n)
+{
+	unsigned int n, num, div, o, Count = 0, i;
+	n = n / 10;
+	num = n;
+	div = 1;
+	if (num > 0)
+	{
+		while ((num / 10) != 0)
+		{
+			num = num / 10;
+			div = div * 10;
+		}
+		while (div >= 1)
+		{
+			i = n / div;
+			_putchar(i + '0');
+			n = n % div;
+			div = div / 10;
+			Count++;
+		}
+	}
+	o = n % 10; /*last digit*/
+	_putchar(o + '0');
+	Count++;
+	return (Count);
+}	

@@ -5,7 +5,7 @@
 
 /**
 * print_char - function that prints a char
-* @arg: argument of type va_list
+* @c: argument of type va_list
 * @return: number of elements printed
 */
 int print_char(va_list arg)
@@ -15,11 +15,6 @@ int print_char(va_list arg)
 	_putchar(c);
 	return (1);
 }
-/*
-* print_percent - function that prints percent
-* @arg: argument of type va_list
-* return: number of elements printed
-*/
 int print_percent(va_list arg)
 {
 	(void)arg;
@@ -28,8 +23,8 @@ int print_percent(va_list arg)
 }
 /**
 * print_string - function that prints string
-* @arg: argument of type va_list
-* return: number of elements printed
+* @c: argument of type va_list
+* @return: number of elements printed
 */
 int print_string(va_list arg)
 {
@@ -45,7 +40,7 @@ int print_string(va_list arg)
 /**
 * print_int - function that prints integers
 * @arg: argument of type va_list
-* return: number of elements printed
+* @return: number of elements printed
 */
 int print_int(va_list arg)
 {
@@ -82,57 +77,4 @@ int print_int(va_list arg)
 	_putchar(o + '0');
 	Count++;
 	return (Count);
-}
-
-/**
-* print_binary_int - print binary intger
-* @arg: argument of type va_list
-* return: number of elements printed
-*/
-unsigned int print_binary_int(unsigned int n)
-{
-	unsigned int num, div, Count = 0, i;
-	num = n;
-	div = 1;
-	if (num > 0)
-	{
-		while ((num / 10) != 0)
-		{
-			num = num / 10;
-			div = div * 10;
-		}
-		while (div >= 1)
-		{
-			i = n / div;
-			_putchar(i + '0');
-			n = n % div;
-			div = div / 10;
-			Count++;
-		}
-	}
-	return (Count);
-}
-/*
-*
-*
-*/
-unsigned int toBi(va_list arg)
-{
-	unsigned int temp = va_arg(arg, int);
-	unsigned int binary = 0, reminder, f = 1;
-	int result;
-	
-	if (va_arg(arg, int) == 0)
-	{
-		return (0);
-	}
-	while(temp != 0)
-	{
-		reminder = temp % 2;
-		binary = binary + reminder * f;
-		f = f * 10;
-		temp = temp / 2;
-	}
-	result = print_binary_int(binary);
-	return (result);
 }
