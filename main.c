@@ -53,5 +53,26 @@ int main(void)
     printf("normal len = %d\n", len);
     len = _printf("now i'm trying to %%%% \n");
     printf("my len = %d\n", len);
+    printf("-------------- TEST Unknown char --------------\n");
+    /* test with unknown char with % */
+    len = printf("string with unknown char %q ...\n");
+    printf("normal len = %d\n", len);
+    len = _printf("string with unknown char %q ...\n");
+    printf("my len = %d\n", len);
+    
+    printf("-------------- TEST UNKOWN FORMATTER --------------\n");
+    /**/
+    len = printf("Unknown:[%r]ahlemtest\n");
+    printf("normal len = %d\n", len);
+    len = _printf("Unknown:[%r]ahlemtest\n");
+    printf("my len = %d\n", len);
+    printf("-------------- TEST EDGE CASE --------------\n");
+    /**/
+    len = printf("now i'm trying to %%%% \" and \bomm and  \\ \n");
+    printf("normal len = %d\n", len);
+    len = _printf("now i'm trying to %%%% \" and \bomm and  \\ \n");
+    printf("my len = %d\n", len);
+    
+
     return (0);
 }
