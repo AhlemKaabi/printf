@@ -91,7 +91,7 @@ int print_int(va_list arg)
 */
 unsigned int print_binary_int(unsigned int n)
 {
-	unsigned int num, div, o, Count = 0, i;
+	unsigned int num, div, Count = 0, i;
 	num = n;
 	div = 1;
 	if (num > 0)
@@ -118,10 +118,10 @@ unsigned int print_binary_int(unsigned int n)
 */
 unsigned int toBi(va_list arg)
 {
-	unsigned int temp, binary = 0, reminder, f = 1;
+	unsigned int temp = va_arg(arg, int);
+	unsigned int binary = 0, reminder, f = 1;
 	int result;
 	
-	temp = va_arg(arg, int);
 	if (va_arg(arg, int) == 0)
 	{
 		return (0);
