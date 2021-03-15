@@ -31,6 +31,12 @@ int print_string(va_list arg)
 	}
 	return (i);
 }
+int print_percent(va_list arg)
+{
+	(void)arg;
+	_putchar('%');
+	return (1);	
+}
 /**
 * print_int - function that prints integers
 * @arg: argument of type va_list

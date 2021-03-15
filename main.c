@@ -34,20 +34,20 @@ int main(void)
     len = _printf("variable test_string = %d\n", x);
     printf("my len = %d\n", len);
     _printf("-------------- TEST INT DONE --------------\n");
-    
+
     /* test for new line and len of printed chars */
-    len = printf("variable test_char = %c\n", test_char);
+    len = printf("this string has no formatter\n");
     printf("normal len = %d\n", len);
-    len = _printf("variable test_char = %c\n", test_char);
+    len = _printf("this string has no formatter\n");
     printf("my len = %d\n", len);
-    printf("-------------- TEST \\n NOT DONE --------------\n");
+    printf("-------------- TEST NO formatter DONE --------------\n");
     
     /* test without format specifier and escape char (BUG HERE) */
-    len = printf("hello you are testing escape \" and \\ \n");
+    len = printf("Percent:[%%%%%%]\n");
     printf("normal len = %d\n", len);
-    len = _printf("hello you are testing escape \" and \\ \n");
+    len = _printf("Percent:[%%%%%%]\n");
     printf("my len = %d\n", len);
-    
+    printf("-------------- TEST Percent --------------\n");
     /* test with %% and \\ and %%%%% and \\\\ (BUG HERE) */
     len = printf("now i'm trying to %%%% \n");
     printf("normal len = %d\n", len);

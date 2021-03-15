@@ -138,7 +138,7 @@ int _printf(const char *format, ...)
 		{"c", print_char},
 		{"s", print_string},
 		{"d", print_int},
-		{"%", print_char},
+		{"%", print_percent},
 		{NULL, NULL}
 	};
 	match_escape e_list[] = {
