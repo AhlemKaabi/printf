@@ -11,9 +11,15 @@
 int print_char(va_list arg)
 {
 	char c;
-	c = va_arg(arg, int);
-	_putchar(c);
-	return (1);
+
+	if (va_arg(arg, int) == 0)
+			return (0);
+	else 
+	{
+		c = va_arg(arg, int);
+		_putchar(c);
+		return (1);
+	}
 }
 /**
 * print_string - function that prints string
@@ -24,12 +30,18 @@ int print_string(va_list arg)
 {
 	int i = 0;
 	char *str;
-	str = va_arg(arg, char *);
-	for (i = 0; str[i] != '\0'; i++)
+
+	if (va_arg(arg, int) == 0)
+		return (0);
+	else
 	{
-		_putchar(str[i]);
+		str = va_arg(arg, char *);
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			_putchar(str[i]);
+		}
+		return (i);
 	}
-	return (i);
 }
 int print_percent(va_list arg)
 {
@@ -44,37 +56,49 @@ int print_percent(va_list arg)
 */
 int print_int(va_list arg)
 {
-	int n = va_arg(arg, int);
-	int i, num, div, o, Count = 0;
+	int i, num, div, o, Count = 0, n;
 
-	o = n % 10;
-	n = n / 10;
-	if (n < 0)
+	if (va_arg(arg, int) == 0)
 	{
-		n = -n;
-		o = -o;
-		_putchar('-');
-		Count++;
+		return (0);
 	}
-	num = n;
-	div = 1;
-	if (num > 0)
+	else
 	{
-		while ((num / 10) != 0)
+		n = va_arg(arg, int);
+		n = n / 10;
+		if (n < 0)
 		{
-			num = num / 10;
-			div = div * 10;
-		}
-		while (div >= 1)
-		{
-			i = n / div;
-			_putchar(i + '0');
-			n = n % div;
-			div = div / 10;
+			n = -n;
+			o = -o;
+			_putchar('-');
 			Count++;
 		}
+		num = n;
+		div = 1;
+		if (num > 0)
+		{
+			while ((num / 10) != 0)
+			{
+				num = num / 10;
+				div = div * 10;
+			}
+			while (div >= 1)
+			{
+				i = n / div;
+				_putchar(i + '0');
+				n = n % div;
+				div = div / 10;
+				Count++;
+			}
+		}
+		o = n % 10; /*last digit*/
+		_putchar(o + '0');
+		Count++;
+		return (Count);
 	}
-	_putchar(o + '0');
-	Count++;
-	return (Count);
 }
+
+
+
+	
+
