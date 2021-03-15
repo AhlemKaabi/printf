@@ -5,7 +5,7 @@
 
 /**
 * print_char - function that prints a char
-* @c: argument of type va_list
+* @arg: argument of type va_list
 * @return: number of elements printed
 */
 int print_char(va_list arg)
@@ -15,10 +15,21 @@ int print_char(va_list arg)
 	_putchar(c);
 	return (1);
 }
+/*
+* print_percent - function that prints percent
+* @arg: argument of type va_list
+* return: number of elements printed
+*/
+int print_percent(va_list arg)
+{
+	(void)arg;
+	_putchar('%');
+	return (1);
+}
 /**
 * print_string - function that prints string
-* @c: argument of type va_list
-* @return: number of elements printed
+* @arg: argument of type va_list
+* return: number of elements printed
 */
 int print_string(va_list arg)
 {
@@ -34,7 +45,7 @@ int print_string(va_list arg)
 /**
 * print_int - function that prints integers
 * @arg: argument of type va_list
-* @return: number of elements printed
+* return: number of elements printed
 */
 int print_int(va_list arg)
 {
@@ -73,32 +84,14 @@ int print_int(va_list arg)
 	return (Count);
 }
 
-
-/************/
-unsigned int toBi(va_list arg)
+/**
+* print_binary_int - print binary intger
+* @arg: argument of type va_list
+* return: number of elements printed
+*/
+unsigned int print_binary_int(unsigned int n)
 {
-	unsigned int temp, binary = 0, reminder, f = 1;
-	int result;
-	
-	temp = va_arg(arg, int);
-	if (va_arg(arg, int) == 0)
-	{
-		return (0);
-	}
-	while(temp != 0)
-	{
-		reminder = temp % 2;
-		binary = binary + reminder * f;
-		f = f * 10;
-		temp = temp / 2;
-	}
-	result = conversion(binary);
-	return (result);
-}
-unsigned int conversion(unsigned int n)
-{
-	unsigned int n, num, div, o, Count = 0, i;
-	n = n / 10;
+	unsigned int num, div, o, Count = 0, i;
 	num = n;
 	div = 1;
 	if (num > 0)
@@ -117,8 +110,29 @@ unsigned int conversion(unsigned int n)
 			Count++;
 		}
 	}
-	o = n % 10; /*last digit*/
-	_putchar(o + '0');
-	Count++;
 	return (Count);
+}
+/*
+*
+*
+*/
+unsigned int toBi(va_list arg)
+{
+	unsigned int temp, binary = 0, reminder, f = 1;
+	int result;
+	
+	temp = va_arg(arg, int);
+	if (va_arg(arg, int) == 0)
+	{
+		return (0);
+	}
+	while(temp != 0)
+	{
+		reminder = temp % 2;
+		binary = binary + reminder * f;
+		f = f * 10;
+		temp = temp / 2;
+	}
+	result = print_binary_int(binary);
+	return (result);
 }

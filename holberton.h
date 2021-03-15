@@ -14,22 +14,11 @@ typedef struct conv_specifier
 	char *c;
 	int (*f)(va_list);
 } match_conversion;
-/**
-* struct escape_specifier - defines a structure for symbols and functions
-*
-* @c: The operator
-* @f: The function that matches
-*/
-typedef struct escape_specifier
-{
-	char *c;
-	int (*f)(void);
-} match_escape;
-
 /* initial functions */
 int _putchar(char c);
 int _printf(const char *format, ...);
-int parser(const char *format, va_list arguments, match_conversion f_list[], match_escape e_list[]);
+int parser(const char *format, va_list arguments);
+int format_resolve(char c, va_list arguments);
 
 /* format conversion functions */
 int print_char(va_list arg);
@@ -38,5 +27,5 @@ int print_int(va_list arg);
 int print_percent(va_list arg);
 
 /* escape conversion functions */
-int new_line(void);
+int new_line(va_list arg);
 #endif
