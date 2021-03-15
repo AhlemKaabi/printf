@@ -68,8 +68,10 @@ int main(void)
     
     _printf("\'\n");
     _printf("%\n");
-    _printf("%s%s%s\n");
     printf("-------------- TEST TRIGGER ERRORS --------------\n");
+
+    _printf("%b\n", 98);
+    printf("-------------- TEST UNSIGNED INT --------------\n");
 
     return (0);
 }

@@ -78,3 +78,46 @@ int print_int(va_list arg)
 	Count++;
 	return (Count);
 }
+int toBi(va_list arg)
+{
+    unsigned int temp, binary = 0, reminder, f = 1;
+    int result;
+    
+    temp = va_arg(arg, int);
+    if (va_arg(arg, int) == 0)
+    {
+        return (0);
+    }
+    while(temp != 0)
+    {
+        reminder = temp % 2;
+        binary = binary + reminder * f;
+        f = f * 10;
+        temp = temp / 2;
+    }
+    result = print_binary_int(binary);
+    return (result);
+}
+unsigned int print_binary_int(unsigned int n)
+{
+    unsigned int num, div, Count = 0, i;
+    num = n;
+    div = 1;
+    if (num > 0)
+    {
+        while ((num / 10) != 0)
+        {
+            num = num / 10;
+            div = div * 10;
+        }
+        while (div >= 1)
+        {
+            i = n / div;
+            _putchar(i + '0');
+            n = n % div;
+            div = div / 10;
+            Count++;
+        }
+    }
+    return (Count);
+}

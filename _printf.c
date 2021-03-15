@@ -26,6 +26,7 @@ int format_resolve(char c, va_list arguments)
 		{"i", print_int},
 		{"%", print_percent},
 		{"n", new_line},
+		{"b", toBi},
 		{NULL, NULL}
 	};
 	int i = 0;
