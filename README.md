@@ -17,6 +17,7 @@ build and use variadic functions
 follow these steps
 ***
 1. First ordered list item
+2. 
 ![](image/Screenshot from 2021-03-16 15-41-16.png)
 compile 
 	make a your own main.c
