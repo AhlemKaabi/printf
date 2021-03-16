@@ -71,7 +71,7 @@ int main(void)
     _printf("%\n");
     printf("-------------- TEST TRIGGER ERRORS DONE --------------\n");
     
-    _printf("%b\n", 98);
+    _printf("%b\n",98);
     printf("-------------- TEST UNSIGNED INT DONE --------------\n");
 
     _printf("A\n");
