@@ -13,7 +13,7 @@ int print_rev(va_list arg)
 	int i = 0;
 	char *str;
 	int len = 0;
-	
+
 	str = va_arg(arg, char *);
 	if (str == NULL)
 	{
@@ -31,38 +31,39 @@ int print_rev(va_list arg)
 	return (len);
 }
 /**
- * rot13 - encode a string using rot13
- * @s: string.
+ * print_rot13 - encode a string using rot13
+ * @arg: string.
  * Return: string.
  */
 int print_rot13(va_list arg)
 {
-    int i = 0;
-    int j;
-    char normal[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    char rotated[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-    char *str;
-    str = va_arg(arg, char *);
+	int i = 0;
+	int j;
+	char normal[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char rotated[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char *str;
+
+	str = va_arg(arg, char *);
 	if (str == NULL)
 	{
 		str = "(null)";
 	}
-    while (*(str + i) != '\0')
-    {
-        for (j = 0; j <= 51; j++)
-        {
-            if (*(str + i) == normal[j])
-            {
-                _putchar(rotated[j]);
-                break;
-            }
-            else if (*(str + i) == ' ')
-            {
-                _putchar(' ');
-                break;
-            }
-        }
-        i++;
-    }
-    return (i);
+	while (*(str + i) != '\0')
+	{
+		for (j = 0; j <= 51; j++)
+		{
+			if (*(str + i) == normal[j])
+			{
+				_putchar(rotated[j]);
+				break;
+			}
+			else if (*(str + i) == ' ')
+			{
+				_putchar(' ');
+				break;
+			}
+		}
+		i++;
+	}
+	return (i);
 }

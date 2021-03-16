@@ -25,7 +25,7 @@ int print_string(va_list arg)
 {
 	int i = 0;
 	char *str;
-	
+
 	str = va_arg(arg, char *);
 	if (str == NULL)
 	{
