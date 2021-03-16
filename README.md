@@ -29,11 +29,11 @@ flowchart
 [test folder](../main/test): here you find our main.c file which you can execute it with the other .c files to simply catch what our function do
 #### files:
 [printf.c](../main/_printf.c)<br>
-[putchar.c](../_putchar.c)<br>
-[format conversion.c](../format_conversion.c)<br>
-[format escape.c](../format_escape.c)<br>
-[holberton.c](../holberton.h)<br>
-[man page](../man_printf)
+[putchar.c](../main/_putchar.c)<br>
+[format conversion.c](../main/format_conversion.c)<br>
+[format escape.c](../main/format_escape.c)<br>
+[holberton.c](../main/holberton.h)<br>
+[man page](../main/man_printf)
 ## Authors
 Boufaden Ala<br>
 Kaabi Ahlem
