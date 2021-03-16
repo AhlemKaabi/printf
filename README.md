@@ -35,5 +35,5 @@ flowchart
 [holberton.c](../holberton.h)
 [man page](../man_printf)
 ## Authors
-Boufaden Ala
+Boufaden Ala<br>
 Kaabi Ahlem
