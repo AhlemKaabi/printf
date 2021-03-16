@@ -44,8 +44,9 @@ int print_string(va_list arg)
 */
 int print_int(va_list arg)
 {
+	int i, div, o, Count = 0;
 	int n = va_arg(arg, int);
-	int i, num, div, o, Count = 0;
+	unsigned int num;
 
 	o = n % 10;
 	n = n / 10;
