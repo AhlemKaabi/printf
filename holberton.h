@@ -37,4 +37,6 @@ int carriage_return(va_list);
 int form_feed(va_list arg);
 int print_tab(va_list arg);
 int print_rot13(va_list arg);
+char *rev_string(char *s);
+char *_memcpy(char *dest, char *src, unsigned int n);
 #endif

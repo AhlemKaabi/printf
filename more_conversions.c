@@ -10,23 +10,19 @@
 */
 int print_rev(va_list arg)
 {
-	int i = 0;
+	int len;
 	char *str;
-	int len = 0;
+	char *ptr;
 
 	str = va_arg(arg, char *);
 	if (str == NULL)
-	{
-		str = ")llun(";
-	}
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		len++;
-	}
-	for (i = len; i >= 0; i--)
-	{
-		_putchar(str[i]);
-	}
+		return (-1);
+	ptr = rev_string(str);
+	if (ptr == NULL)
+		return (-1);
+	for (len = 0; ptr[len] != '\0'; len++)
+		_putchar(ptr[len]);
+	free(ptr);
 	return (len);
 }
 /**
@@ -61,4 +57,42 @@ int print_rot13(va_list arg)
 			_putchar(str[i]);
 	}
 	return (i);
+}
+/**
+* rev_string - reverses a string in place
+*
+* @s: string to reverse
+* Return: A pointer to a character
+*/
+char *rev_string(char *s)
+{
+	int len;
+	int start;
+	char aux;
+	char *dest;
+
+	for (len = 0; s[len] != '\0'; len++)
+	{}
+
+	dest = malloc(sizeof(char) * len + 1);
+	if (dest == NULL)
+		return (NULL);
+
+	_memcpy(dest, s, len);
+	for (start = 0; start < len; start++, len--)
+	{
+	 	aux = dest[len - 1];
+		dest[len - 1] = dest[start];
+		dest[start] = aux;
+	}
+	return (dest);
+}
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int i;
+
+	for (i = 0; i < n; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }
