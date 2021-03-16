@@ -23,7 +23,9 @@ follow these steps
 2. create your own mai.c file or use our's:
 
 4. compile with this command:
-	gcc -Wall -Werror -Wextra -pedantic *.c
+```
+$gcc -Wall -Werror -Wextra -pedantic *.c
+```
 ## get started
 flowchart 
 #### folders:
