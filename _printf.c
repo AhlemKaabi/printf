@@ -115,6 +115,10 @@ int _printf(const char *format, ...)
 	{
 		return (-1);
 	}
+	if (format == NULL)
+	{
+		return (-1);
+	}
 	else
 	{
 		va_start(arguments, format);

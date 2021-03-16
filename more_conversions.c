@@ -37,33 +37,29 @@ int print_rev(va_list arg)
  */
 int print_rot13(va_list arg)
 {
-	int i = 0;
-	int j;
-	char normal[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char rotated[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	int i;
+	int x;
 	char *str;
+	char s[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char u[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	str = va_arg(arg, char *);
 	if (str == NULL)
 	{
-		str = "(null)";
+		return (-1);
 	}
-	while (*(str + i) != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		for (j = 0; j <= 51; j++)
+		for (x = 0; x <= 52; x++)
 		{
-			if (*(str + i) == normal[j])
+			if (str[i] == s[x])
 			{
-				_putchar(rotated[j]);
-				break;
-			}
-			else if (*(str + i) == ' ')
-			{
-				_putchar(' ');
+				_putchar(u[x]);
 				break;
 			}
 		}
-		i++;
+		if (x == 53)
+			_putchar(str[i]);
 	}
 	return (i);
 }
