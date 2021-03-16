@@ -13,7 +13,11 @@ int print_rev(va_list arg)
 	int i = 0;
 	char *str;
 	int len = 0;
-
+	
+	if (str == NULL)
+	{
+		str = "(null)";
+	}	
 	str = va_arg(arg, char *);
 	for (i = 0; str[i] != '\0'; i++)
 	{
@@ -39,6 +43,10 @@ int print_rot13(va_list arg)
     char rotated[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
     char *str;
     str = va_arg(arg, char *);
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
     while (*(str + i) != '\0')
     {
         for (j = 0; j <= 51; j++)
