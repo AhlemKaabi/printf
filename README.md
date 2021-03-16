@@ -24,7 +24,7 @@ follow these steps
 $gcc -Wall -Werror -Wextra -pedantic *.c
 ```
 ## get started
-<img src = "image/flowchart.png">
+<img src = "image/flowchart.png"><br>
 #### folders:
 [test folder](../main/test): here you find our main.c file which you can execute it with the other .c files to simply catch what our function do
 #### files:
