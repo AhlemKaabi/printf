@@ -25,12 +25,12 @@ int print_string(va_list arg)
 {
 	int i = 0;
 	char *str;
-
+	
+	str = va_arg(arg, char *);
 	if (str == NULL)
 	{
 		str = "(null)";
 	}
-	str = va_arg(arg, char *);
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		_putchar(str[i]);

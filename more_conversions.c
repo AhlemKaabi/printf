@@ -14,11 +14,11 @@ int print_rev(va_list arg)
 	char *str;
 	int len = 0;
 	
+	str = va_arg(arg, char *);
 	if (str == NULL)
 	{
 		str = "(null)";
-	}	
-	str = va_arg(arg, char *);
+	}
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		len++;
