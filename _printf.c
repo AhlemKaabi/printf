@@ -107,7 +107,7 @@ int _printf(const char *format, ...)
 	int final_count;
 	va_list arguments;
 
-	if (!format || args == NULL)
+	if (!format || arguments == NULL)
 	{
 		return (-1);
 	}
