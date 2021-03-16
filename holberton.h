@@ -29,10 +29,12 @@ int print_int(va_list arg);
 int print_percent(va_list arg);
 int toBi(va_list arg);
 unsigned int print_binary_int(unsigned int n);
+int print_rev(va_list arg);
 
 /* escape conversion functions */
 int new_line(va_list arg);
 int carriage_return(va_list);
 int form_feed(va_list arg);
 int print_tab(va_list arg);
+int print_rot13(va_list arg);
 #endif

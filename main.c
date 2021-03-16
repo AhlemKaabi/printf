@@ -10,7 +10,7 @@
 int main(void)
 {
     // char test_char = 'A';
-    // char *test_string = "hello holberton";
+    char *test_string = "hello holberton";
     // int x = 1125;
     // // int y = 65;
     // int len;
@@ -73,5 +73,16 @@ int main(void)
     _printf("%b\n", 98);
     printf("-------------- TEST UNSIGNED INT DONE --------------\n");
 
+    _printf("A\n");
+    _printf("B\tC\n");
+    _printf("D\rE\n");
+    _printf("F\fG\n");
+    printf("-------------- TEST ESCAPE CHAR DONE --------------\n");
+
+    _printf("%r\n",test_string);
+    printf("-------------- TEST REVERSE STRING DONE --------------\n");
+
+      _printf("%R\n", test_string);
+    printf("-------------- TEST ROT13 DONE --------------\n");
     return (0);
 }

@@ -33,9 +33,10 @@ int format_resolve(char c, va_list arguments)
 		{"b", toBi},
 		{"%", print_percent},
 		{"n", new_line},
-		{"r", carriage_return},
+		{"r", print_rev},
 		{"f", form_feed},
 		{"t", print_tab},
+		{"R", print_rot13},
 		{NULL, NULL}
 	};
 	int i = 0;
