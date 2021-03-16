@@ -82,11 +82,19 @@ int parser(const char *format, va_list arguments)
 				_putchar(*(format + i + 1));
 				printed_chars = printed_chars + 2;
 				i++;
+				if (*(format + i) == '\0')
+				{
+					return (-1);
+				}
 			}
 			else
 			{
 				printed_chars = printed_chars + sum;
 				i++;
+				if (*(format + i) == '\0')
+				{
+					return (-1);
+				}
 			}
 		}
 		else

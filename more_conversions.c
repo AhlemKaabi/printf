@@ -17,13 +17,12 @@ int print_rev(va_list arg)
 	str = va_arg(arg, char *);
 	if (str == NULL)
 	{
-		str = "(null)";
+		str = ")llun(";
 	}
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		len++;
 	}
-	_putchar('\n');
 	for (i = len; i >= 0; i--)
 	{
 		_putchar(str[i]);
