@@ -17,6 +17,12 @@ int _strlen(const char *s)
 	}
 	return (i);
 }
+/**
+ * format_resolve - function that matches the format
+ * @c: the format c
+ * @arguments: pointer to arguments
+ * Return: the number of printed chars
+**/
 int format_resolve(char c, va_list arguments)
 {
 	match_conversion f_list[] = {
@@ -24,15 +30,18 @@ int format_resolve(char c, va_list arguments)
 		{"s", print_string},
 		{"d", print_int},
 		{"i", print_int},
+		{"b", toBi},
 		{"%", print_percent},
 		{"n", new_line},
-		{"b", toBi},
+		{"r", carriage_return},
+		{"f", form_feed},
+		{"t", print_tab},
 		{NULL, NULL}
 	};
 	int i = 0;
 	int printed;
 	int (*func_ptr_frmt)(va_list);
-	
+
 	while (f_list[i].c != NULL)
 	{
 		if (f_list[i].c[0] == c)
@@ -52,8 +61,6 @@ int format_resolve(char c, va_list arguments)
  * parser - function that will parse the given format
  * @format: the format to be parsed
  * @arguments: pointer to arguments
- * @f_list: table containing format specifier
- * @e_list: table containing special escape specifier
  * Return: the number of printed chars in count1
 **/
 int parser(const char *format, va_list arguments)
@@ -61,13 +68,13 @@ int parser(const char *format, va_list arguments)
 	char v;
 	int i, sum;
 	int printed_chars = 0;
-	
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (*(format + i) == '%' || *(format + i) == '\\')
 		{
 			v = *(format + i + 1);
-			sum = format_resolve(v,arguments);
+			sum = format_resolve(v, arguments);
 			if (sum == -1) /* no match was found */
 			{
 				_putchar(*(format + i));
@@ -81,11 +88,11 @@ int parser(const char *format, va_list arguments)
 				i++;
 			}
 		}
-		else 
+		else
 		{
 			_putchar(*(format + i));
 			printed_chars++;
-		}	
+		}
 	}
 return (printed_chars);
 }

@@ -4,10 +4,12 @@
 #include <stdlib.h>
 #include <stdarg.h>
 /**
-* conv_specifier - defines a structure for symbols and functions
+* conv_specifier - defines a structure for format and escape
 *
-* @c: The operator
-* @f: The function that matches
+* @sym: The operator
+* @f: The function associated
+*
+* description: nothing to say here
 */
 typedef struct conv_specifier
 {
@@ -30,4 +32,7 @@ unsigned int print_binary_int(unsigned int n);
 
 /* escape conversion functions */
 int new_line(va_list arg);
+int carriage_return(va_list);
+int form_feed(va_list arg);
+int print_tab(va_list arg);
 #endif
