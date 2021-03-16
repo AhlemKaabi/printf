@@ -16,13 +16,12 @@ build and use variadic functions
 ## try the code
 follow these steps
 ***
-1. First ordered list item
-
-Inline-style: 
-<img src = "image/Screenshot from 2021-03-16 15-41-16.png">
-
-compile 
-	make a your own main.c
+1. clone the repository
+<img src = "image/Screenshot from 2021-03-16 15-42-33.png">
+<img src = "image/Screenshot from 2021-03-16 15-44-56.png">
+2. create your own mai.c file or use our's:
+3. compile with this command:
+	gcc -Wall -Werror -Wextra -pedantic *.c
 ## get started
 flowchart 
 #### folders:
