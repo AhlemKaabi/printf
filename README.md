@@ -1,7 +1,7 @@
 # Printf function
 
 ## what!
-this is a group project for [holberton school]()
+this is a group project for [holberton school](https://www.holbertonschool.com/tn/en/)
 the ojective is to write your own printf function (C laguage) with C language.
 Added to that you can design your custom formatting specification for any occasiono.
 more explanation.
