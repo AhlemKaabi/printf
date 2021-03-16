@@ -18,7 +18,7 @@ follow these steps
 <img src = "image/Screenshot from 2021-03-16 15-44-56.png">
 
 2. create your own mai.c file or use our's:
-
+[main.c](../main/test/main.c)
 4. compile with this command:
 ```
 $gcc -Wall -Werror -Wextra -pedantic *.c
@@ -26,13 +26,13 @@ $gcc -Wall -Werror -Wextra -pedantic *.c
 ## get started
 flowchart 
 #### folders:
-[test folder](../test): here you find our main.c file which you can execute it with the other .c files to simply catch what our function do
+[test folder](../main/test): here you find our main.c file which you can execute it with the other .c files to simply catch what our function do
 #### files:
-[printf.c](../_printf.c)
-[putchar.c](../_putchar.c)
-[format conversion.c](../format_conversion.c)
-[format escape.c](../format_escape.c)
-[holberton.c](../holberton.h)
+[printf.c](../main/_printf.c)<br>
+[putchar.c](../_putchar.c)<br>
+[format conversion.c](../format_conversion.c)<br>
+[format escape.c](../format_escape.c)<br>
+[holberton.c](../holberton.h)<br>
 [man page](../man_printf)
 ## Authors
 Boufaden Ala<br>
