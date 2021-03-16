@@ -19,8 +19,10 @@ follow these steps
 1. clone the repository
 <img src = "image/Screenshot from 2021-03-16 15-42-33.png">
 <img src = "image/Screenshot from 2021-03-16 15-44-56.png">
+
 2. create your own mai.c file or use our's:
-3. compile with this command:
+
+4. compile with this command:
 	gcc -Wall -Werror -Wextra -pedantic *.c
 ## get started
 flowchart 
