@@ -80,56 +80,27 @@ int print_int(va_list arg)
 	return (Count);
 }
 /**
-* toBi - function that binary
-* @arg: argument of type va_list
+* print_bin - convert to binary
+* @arg: argument
 * Return: number of elements printed
 */
-int toBi(va_list arg)
+int print_bin(va_list arg)
 {
-	unsigned int temp, binary = 0, reminder, f = 1;
-	int result;
+	char *buffer;
+	int len, i;
+	int a;
 
-	temp = va_arg(arg, int);
-	if (va_arg(arg, int) == 0)
+	a = va_arg(arg, int);
+	len = alloc_len(a, 2);
+	buffer = malloc(sizeof(char) * len + 1);
+	/* buffer holds the number of digits of the int */
+	buffer = itoa(a, buffer, 2);
+	buffer[len] = '\0';
+	buffer = rev_string(buffer);
+	for (i = 0; buffer[i] != '\0'; i++)
 	{
-		return (0);
+		_putchar(*(buffer + i));
 	}
-	while (temp != 0)
-	{
-		reminder = temp % 2;
-		binary = binary + reminder * f;
-		f = f * 10;
-		temp = temp / 2;
-	}
-	result = print_binary_int(binary);
-	return (result);
-}
-/**
-* print_binary_int - convert to binary
-* @n: argument
-* Return: number of elements printed
-*/
-unsigned int print_binary_int(unsigned int n)
-{
-	unsigned int num, div, Count = 0, i;
-
-	num = n;
-	div = 1;
-	if (num > 0)
-	{
-		while ((num / 10) != 0)
-		{
-			num = num / 10;
-			div = div * 10;
-		}
-		while (div >= 1)
-		{
-			i = n / div;
-			_putchar(i + '0');
-			n = n % div;
-			div = div / 10;
-			Count++;
-		}
-	}
-	return (Count);
+	free(buffer);
+	return (i);
 }

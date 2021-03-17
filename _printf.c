@@ -30,13 +30,15 @@ int format_resolve(char c, va_list arguments)
 		{"s", print_string},
 		{"d", print_int},
 		{"i", print_int},
-		{"b", toBi},
+		{"b", print_bin},
 		{"%", print_percent},
 		{"n", new_line},
 		{"r", print_rev},
 		{"f", form_feed},
 		{"t", print_tab},
 		{"R", print_rot13},
+		{"x", print_hex},
+		{"o", print_octale},
 		{NULL, NULL}
 	};
 	int i = 0;

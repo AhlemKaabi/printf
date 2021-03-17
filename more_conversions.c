@@ -2,7 +2,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
-
+#include <stdint.h>
+#include <string.h>
 /**
 * print_rev - function that prints string in reverse
 * @arg: argument of type va_list
@@ -26,10 +27,40 @@ int print_rev(va_list arg)
 	return (len);
 }
 /**
- * print_rot13 - encode a string using rot13
- * @arg: string.
- * Return: string.
- */
+* rev_string - reverses a string in place
+*
+* @s: string to reverse
+* Return: A pointer to a character
+*/
+char *rev_string(char *s)
+{
+	int len;
+	int start;
+	char aux;
+	char *dest;
+
+	for (len = 0; s[len] != '\0'; len++)
+	{}
+
+	dest = malloc(sizeof(char) * len + 1);
+	if (dest == NULL)
+		return (NULL);
+
+	_memcpy(dest, s, len);
+	/* permutation */
+	for (start = 0; start < len; start++, len--)
+	{
+		aux = dest[len - 1];
+		dest[len - 1] = dest[start];
+		dest[start] = aux;
+	}
+	return (dest);
+}
+/**
+* print_rot13 - encode a string using rot13
+* @arg: string.
+* Return: string.
+*/
 int print_rot13(va_list arg)
 {
 	int i;
@@ -59,47 +90,52 @@ int print_rot13(va_list arg)
 	return (i);
 }
 /**
-* rev_string - reverses a string in place
-*
-* @s: string to reverse
-* Return: A pointer to a character
+* print_hex - convert to hex
+* @arg: argument
+* Return: number of elements printed
 */
-char *rev_string(char *s)
+int print_hex(va_list arg)
 {
-	int len;
-	int start;
-	char aux;
-	char *dest;
+	char *buffer;
+	int len, i;
+	int a;
 
-	for (len = 0; s[len] != '\0'; len++)
-	{}
-
-	dest = malloc(sizeof(char) * len + 1);
-	if (dest == NULL)
-		return (NULL);
-
-	_memcpy(dest, s, len);
-	for (start = 0; start < len; start++, len--)
+	a = va_arg(arg, int);
+	len = alloc_len(a, 16);
+	buffer = malloc(sizeof(char) * len + 1);
+	/* buffer holds the number of digits of the int */
+	buffer = itoa(a, buffer, 16);
+	buffer[len] = '\0';
+	buffer = rev_string(buffer);
+	for (i = 0; buffer[i] != '\0'; i++)
 	{
-		aux = dest[len - 1];
-		dest[len - 1] = dest[start];
-		dest[start] = aux;
+		_putchar(*(buffer + i));
 	}
-	return (dest);
+	free(buffer);
+	return (i);
 }
 /**
- * _memcpy - copy memory area
- * @dest: Destination for copying
- * @src: Source to copy from
- * @n: The number of bytes to copy
- * Return: The _memcpy() function returns a pointer to dest.
- */
-char *_memcpy(char *dest, char *src, unsigned int n)
+* print_octale - convert to ocatle
+* @arg: argument
+* Return: number of elements printed
+*/
+int print_octale(va_list arg)
 {
-	unsigned int i;
+	char *buffer;
+	int len, i;
+	int a;
 
-	for (i = 0; i < n; i++)
-		dest[i] = src[i];
-	dest[i] = '\0';
-	return (dest);
+	a = va_arg(arg, int);
+	len = alloc_len(a, 8);
+	buffer = malloc(sizeof(char) * len + 1);
+	/* buffer holds the number of digits of the int */
+	buffer = itoa(a, buffer, 8);
+	buffer[len] = '\0';
+	buffer = rev_string(buffer);
+	for (i = 0; buffer[i] != '\0'; i++)
+	{
+		_putchar(*(buffer + i));
+	}
+	free(buffer);
+	return (i);
 }
