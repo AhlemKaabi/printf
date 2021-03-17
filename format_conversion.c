@@ -50,7 +50,7 @@ int print_int(va_list arg)
 
 	o = n % 10;
 	n = n / 10;
-	if (n < 0)
+	if (n < 0 || o < 0)
 	{
 		n = -n;
 		o = -o;
