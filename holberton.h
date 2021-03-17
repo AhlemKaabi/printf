@@ -28,7 +28,7 @@ int print_string(va_list arg);
 int print_int(va_list arg);
 int print_percent(va_list arg);
 int toBi(va_list arg);
-unsigned int print_binary_int(unsigned int n);
+long int print_binary_int(long int n);
 int print_rev(va_list arg);
 
 /* escape conversion functions */

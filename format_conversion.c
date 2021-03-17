@@ -86,7 +86,7 @@ int print_int(va_list arg)
 */
 int toBi(va_list arg)
 {
-	unsigned int temp, binary = 0, reminder, f = 1;
+	long int temp, binary = 0, reminder, f = 1;
 	int result;
 
 	temp = va_arg(arg, int);
@@ -109,9 +109,9 @@ int toBi(va_list arg)
 * @n: argument
 * Return: number of elements printed
 */
-unsigned int print_binary_int(unsigned int n)
+long int print_binary_int(long int n)
 {
-	unsigned int num, div, Count = 0, i;
+	long int num, div, Count = 0, i;
 
 	num = n;
 	div = 1;
