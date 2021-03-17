@@ -87,12 +87,19 @@ int print_int(va_list arg)
 int print_bin(va_list arg)
 {
 	char *buffer;
-	int len, i;
-	int a;
+	unsigned int len, i, a;
 
-	a = va_arg(arg, int);
+	a = va_arg(arg, unsigned int);
+	if (a == 0)
+	{
+		return (_putchar('0'));
+	}
 	len = alloc_len(a, 2);
 	buffer = malloc(sizeof(char) * len + 1);
+	if (buffer == NULL)
+	{
+		return (-1);
+	}
 	/* buffer holds the number of digits of the int */
 	buffer = itoa(a, buffer, 2);
 	buffer[len] = '\0';

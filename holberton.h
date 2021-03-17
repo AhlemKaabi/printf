@@ -25,7 +25,7 @@ char *rev_string(char *s);
 char *_memcpy(char *dest, char *src, unsigned int n);
 char hex_digit(int v);
 int alloc_len(int num, int base);
-char* itoa(int num, char* str, int base);
+char* itoa(unsigned int num, char* str, int base);
 
 /* format conversion functions */
 int print_char(va_list arg);

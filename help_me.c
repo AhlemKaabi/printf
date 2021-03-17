@@ -25,42 +25,25 @@ int alloc_len(int num, int base)
 * @str: result will be stored
 * Return: pointer to str.
 **/
-
-char *itoa(int num, char *str, int base)
+char *itoa(unsigned int num, char *str, int base)
 {
-	int i = 0;
-	int isNegative = 0;
+	unsigned int i;
 
-	/* Handle 0 explicitely, otherwise empty string is printed for 0 */
-	if (num == 0)
+	if (base == 2)
 	{
-		str[i++] = '0';
-		str[i] = '\0';
-		return (str);
+		for (i = 0; num > 0; i++)
+		{
+			if (num % 2 == 0)
+			{
+				str[i] = '0';
+			}
+			else
+			{
+				str[i] = '1';
+			}
+			num = num / 2;
+		}
 	}
-
-	/* In standard itoa(), negative numbers are handled only with */
-	if (num < 0 && base == 10)
-	{
-		isNegative = 1;
-		num = -num;
-	}
-
-	/* Process individual digits */
-	while (num != 0)
-	{
-		int rem = num % base;
-
-		str[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
-		num = num / base;
-	}
-
-	/* If number is negative, append '-' */
-	if (isNegative == 1)
-		str[i++] = '-';
-
-	str[i] = '\0'; /* Append string terminator */
-
 	return (str);
 }
 /**
